@@ -1,18 +1,28 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Category v-for="category in categories" :key="category.id" :category="category"/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Category from '@/components/Category'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    Category
+  },
+  computed: {
+    categories() {
+      return this.$store.state.categories
+    }
   }
 }
 </script>
+
+<style scoped>
+.home {
+  width: 95%;
+  margin: 0 auto;
+}
+</style>
